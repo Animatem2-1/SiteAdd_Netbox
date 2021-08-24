@@ -1,0 +1,49 @@
+Algorytm programu dodawania siteow w ZHS:
+
+1. name - pelna dowolonosc custom
+
+2. slug - generowane przez program - toLowerCase i blank space to dash
+
+3. status - all the time Active
+
+4. region - wpisuje uzytkownik - help - wyswietla pomoc 
+
+5. tenant - all the time ZHS
+
+6. facility - numer obiektu - wpisuje custom
+
+7. asn - albo wpisuje custom, albo podprogram do liczenia asnow w regionie
+
+8. time_zone - all the time Europe/Warsaw
+
+9. description - Nr pkt kontaktowego ... - custom wpisuje liczbe
+
+10. DNS Site Name - wpisuje custom - 2 oktet w nazwie switchy robionych na ten region
+
+
+
+
+Algorytm programu dodawania rackow w ZHS:
+
+1. site - najlepiej zeby custom nie wpisywal tylko wybieral z dostepnych - dzieki temu program bedzie mogl generowac nastepne pola
+
+2. name  - nazwa racka czyli facility id plus kolejny numer na danym wezle/site 
+
+3. facility_id - site facility no plus asn no 
+
+4. tenant - ZHS
+
+5. status - Active
+
+6. width - 19
+
+7. u_height - liczba u do wpisania przez customa - domyslnie 42
+
+8. comments - Szerokosc geograficzna - uzytkownik wkleja tylko skopiowaa szerokosc z googla - jesli jest.
+
+
+zapytanie o facility id - mozliwe wyswietlenie bazy - ale raczej zbedne
+z dostepnej bazy dodanie automatyczne nazwy siteu
+name racka - wpisuje uzytkownik ale tylko koejny numer szafy na wezle 
+
+
