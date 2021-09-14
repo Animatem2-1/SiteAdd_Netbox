@@ -1,0 +1,14 @@
+Siteadd.py = to glowny plik, ktory odpalamy. 
+
+Setup.py = daje py2exe. Komenda py setup.py py2exe
+
+2 excelowe pliki sa zaciagniete z Netboxa. Nalezy exportowac tylko ZHS.
+
+Netbox_sites.txt = ten plik jest tworzony
+
+CheckUsedNetboxRegions.py = sprawdzajac 2 pliki csv metoda ukazuje nam liste regionow i ich asn (liczbe siteow w danym regionie) w trybie online. Jesli wygenerowana lista jest nie zgodna z plikiem oldAsnBase.txt, wyjdzie blad. Patrz nizej.
+
+offlineAsnList.py = to ta metoda sprawdza pliki oldAsnBase.txt z ta wygenerowana przez plik CheckUsedNetboxRegions.py, a nastepnie otwiera aktualna offline baze asn z pliku actualAsnBase.txt. 
+
+upgradingAsnList.py = metoda zaczytuje info, a nastepnie aktualizuje liste actualAsnBase.txt jesli musi.
+

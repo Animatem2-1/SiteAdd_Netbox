@@ -1,8 +1,9 @@
 import sys
 import json
-import oncsvRegions
-import oncsvSites
+import checkUsedNetboxRegions
 import fileCreator
+import offlineAsnList
+import upgradingAsnList
 #Poczatek - generowanie bazy lub nie
 
 print("Generowanie bazy...")
@@ -26,13 +27,17 @@ siteName = input()
 print("Wprowadz akronim regionu lub wpisz help, aby wyswietlic dostepne regiony:")
 region = input()
 if region == "help":
-    oncsvRegions.mcsvfile()
-    print("Wprowdz akronim regionu:")
+    asnDict = checkUsedNetboxRegions.netboxBaseASN()
+    for x in asnDict.keys():
+        print(x)
+    print("Wprowadz akronim regionu:")
     region = input()
 slug = siteName.lower().replace(" ", "-") # slug generator
 print("Wprowadz numer obiektu:")
 facility = input()
-asn = str(oncsvSites.mASNno(region))
+offlineAsnDict = offlineAsnList.offlineAsnList()
+asn = str(offlineAsnDict[region])
+#asn = str(oncsvSites.mASNno(region))
 print("Generowanie ostatniego zarejestrowanego ASN...")
 print("Wynik: " + asn)
 print("Wprowadz kolejny numer ASN:")
@@ -41,4 +46,6 @@ print("Wprowadz numer punktu kontaktowego:")
 contactPoint = input()
 print("Wprowadz DNS Site Name (drugi oktet nazwy urzadzenia):")
 dnsSiteName = input()
+
+upgradingAsnList.upgrading(region, asn)
 fileCreator.mcreate(siteName, region, slug, facility, asn, contactPoint, dnsSiteName)
