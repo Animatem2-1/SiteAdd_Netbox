@@ -1,33 +1,15 @@
 import sys
 import json
-import checkUsedNetboxRegions
+import getRegAsn
 import fileCreator
-import offlineAsnList
-import upgradingAsnList
-#Poczatek - generowanie bazy lub nie
 
-print("Generowanie bazy...")
-try:
-    file = open("netbox_sites.txt", "x") #x nie doda pliku, gdy juz istnieje
-    file.write("name,slug,status,region,tenant,facility,asn,time_zone,description,cf_DNS Site Name")
-    file.close()
-except:
-    print("Plik istnieje. Wygenerowac nowy? (y/n)")
-    newFileBoolean = input()
-    if newFileBoolean == "y":
-        file = open("netbox_sites.txt", "w") #w nadpisze dokument
-        file.write("name,slug,status,region,tenant,facility,asn,time_zone,description,cf_DNS Site Name")
-        file.close()
-    else: pass
-
-#Koniec generowania bazy
 
 print("Wprowadz nazwe site'u:")
 siteName = input()
 print("Wprowadz akronim regionu lub wpisz help, aby wyswietlic dostepne regiony:")
 region = input()
 if region == "help":
-    asnDict = checkUsedNetboxRegions.netboxBaseASN()
+    asnDict = getRegAsn.getRegAsn()
     for x in asnDict.keys():
         print(x)
     print("Wprowadz akronim regionu:")
@@ -35,9 +17,10 @@ if region == "help":
 slug = siteName.lower().replace(" ", "-") # slug generator
 print("Wprowadz numer obiektu:")
 facility = input()
-offlineAsnDict = offlineAsnList.offlineAsnList()
-asn = str(offlineAsnDict[region])
-#asn = str(oncsvSites.mASNno(region))
+
+dictRegAsn = getRegAsn.getRegAsn()
+asn = str(dictRegAsn[region])
+
 print("Generowanie ostatniego zarejestrowanego ASN...")
 print("Wynik: " + asn)
 print("Wprowadz kolejny numer ASN:")
@@ -47,5 +30,4 @@ contactPoint = input()
 print("Wprowadz DNS Site Name (drugi oktet nazwy urzadzenia):")
 dnsSiteName = input()
 
-upgradingAsnList.upgrading(region, asn)
 fileCreator.mcreate(siteName, region, slug, facility, asn, contactPoint, dnsSiteName)
