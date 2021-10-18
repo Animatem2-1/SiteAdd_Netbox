@@ -1,1 +1,0 @@
-{'ADMKR': '4', 'P1ADMKR': 0, 'BEK': 4, 'BWG': 3, 'BWZ1': '0', 'BWZ2': 7, 'EXTKR': 0, 'ZZEXTKR': 2, 'OLDBWG': 1, 'PSK': 0, 'PSKZS': 0, 'SOPIRG': 0, 'ZKK': '2'}
